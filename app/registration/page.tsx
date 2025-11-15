@@ -2,10 +2,10 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useUserStore } from '../../lib/store'
 
-export default function RegistrationPage() {
+function RegistrationForm() {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 	const telegramId = useUserStore(state => state.telegramId)
@@ -50,5 +50,13 @@ export default function RegistrationPage() {
 			/>
 			<Button onClick={handleNext}>Next</Button>
 		</div>
+	)
+}
+
+export default function RegistrationPage() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<RegistrationForm />
+		</Suspense>
 	)
 }
