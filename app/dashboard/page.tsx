@@ -10,7 +10,7 @@ export default function Dashboard() {
 	useEffect(() => {
 		if (!accessToken) return
 
-		fetch('http://localhost:8000/api/v1/users/me', {
+		fetch('https://helminthoid-clumsily-xuan.ngrok-free.dev/api/v1/users/me', {
 			headers: { Authorization: `Bearer ${accessToken}` },
 		})
 			.then(res => res.json())

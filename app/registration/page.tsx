@@ -16,7 +16,7 @@ export default function RegistrationPage() {
 
 	const handleNext = async () => {
 		const res = await fetch(
-			'http://localhost:8000/api/v1/registration/submit-step',
+			'https://helminthoid-clumsily-xuan.ngrok-free.dev/api/v1/registration/submit-step',
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },

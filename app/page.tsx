@@ -13,11 +13,14 @@ export default function Home() {
 		const initData = initTelegramWebApp()
 		if (!initData) return
 
-		fetch('http://localhost:8000/api/v1/auth/telegram-login', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ init_data: initData }),
-		})
+		fetch(
+			'https://helminthoid-clumsily-xuan.ngrok-free.dev/api/v1/auth/telegram-login',
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ init_data: initData }),
+			}
+		)
 			.then(res => res.json())
 			.then(data => {
 				if (data.status === 'ok') {
