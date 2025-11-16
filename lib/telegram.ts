@@ -1,12 +1,19 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const tg = (window as any).Telegram?.WebApp
+'use client'
+
+export const getTelegram = () => {
+	if (typeof window === 'undefined') return null
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return (window as any)?.Telegram?.WebApp ?? null
+}
 
 export const initTelegramWebApp = () => {
-	if (!tg) return null
-	tg.expand() // full screen
+	const tg = getTelegram()
+	if (!tg) return ''
+	tg.expand()
 	return tg.initData || ''
 }
 
-export const getTelegramInitData = (): string => {
+export const getTelegramInitData = () => {
+	const tg = getTelegram()
 	return tg?.initData || ''
 }

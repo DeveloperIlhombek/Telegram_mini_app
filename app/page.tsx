@@ -1,4 +1,5 @@
 'use client'
+
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useUserStore } from '../lib/store'
@@ -34,8 +35,6 @@ export default function Home() {
 	}, [])
 
 	return (
-		<div className='flex items-center justify-center h-screen'>
-			<p className='text-lg font-semibold'>Loading Telegram Mini App...</p>
-		</div>
+		<div className='flex items-center justify-center h-screen'>Loading...</div>
 	)
 }
