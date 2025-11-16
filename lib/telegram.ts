@@ -1,22 +1,19 @@
-export const getTelegram = () => {
+// ❗ Hech qanday window global scope-da yo‘q
+// ❗ Faqat shart bilan tekshiriladi
+// ❗ Vercel build vaqtida hech qanday xato bermaydi
+
+export function getTelegram() {
 	if (typeof window === 'undefined') return null
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	return (window as any)?.Telegram?.WebApp ?? null
 }
 
-export const initTelegramWebApp = () => {
-	const tg = getTelegram()
-	if (!tg) return ''
-	tg.expand()
-	return tg.initData || ''
-}
-
-export const getTelegramInitData = () => {
+export function getTelegramInitData() {
 	const tg = getTelegram()
 	return tg?.initData || ''
 }
-export const getTelegramSafe = () => {
-	if (typeof window === 'undefined') return null
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	return (window as any)?.Telegram?.WebApp ?? null
+
+export function expandTelegram() {
+	const tg = getTelegram()
+	if (tg) tg.expand()
 }
