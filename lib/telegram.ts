@@ -1,5 +1,3 @@
-'use client'
-
 export const getTelegram = () => {
 	if (typeof window === 'undefined') return null
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,4 +14,9 @@ export const initTelegramWebApp = () => {
 export const getTelegramInitData = () => {
 	const tg = getTelegram()
 	return tg?.initData || ''
+}
+export const getTelegramSafe = () => {
+	if (typeof window === 'undefined') return null
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return (window as any)?.Telegram?.WebApp ?? null
 }
